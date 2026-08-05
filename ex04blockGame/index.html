@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEON BREAK</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="hud">
+      <div class="hud-brand">NEON<span>BREAK</span></div>
+      <div class="hud-stats">        <div class="stat">
+          <span class="stat-label">SCORE</span>
+          <span class="stat-value" id="score">0</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">LEVEL</span>
+          <span class="stat-value" id="level">1</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">LIVES</span>
+          <span class="stat-value" id="lives">♥♥♥</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="stage" id="stage">
+      <canvas id="game" width="900" height="600"></canvas>
+
+      <div class="overlay" id="overlay">
+        <div class="overlay-panel" id="panel-start">
+          <p class="overlay-kicker">ARCADE COMPLETE</p>
+          <h1 class="overlay-title">NEON<br />BREAK</h1>
+          <p class="overlay-desc">아이템 · 레이저 · 보스 · 랭킹<br />점수 1000 돌파 시 보너스 보스!</p>
+          <button class="btn" id="btn-start" type="button">START</button>
+          <ul class="controls">
+            <li><kbd>←</kbd><kbd>→</kbd> / 마우스 — 패들</li>
+            <li><kbd>SPACE</kbd> — 발사 / 일시정지</li>
+            <li><kbd>Z</kbd> / 클릭 — 레이저</li>
+          </ul>
+          <div class="rank-box">
+            <h3 class="rank-title">TOP RANKING</h3>
+            <ol class="rank-list" id="rank-list-start"></ol>
+          </div>
+        </div>
+
+        <div class="overlay-panel hidden" id="panel-pause">
+          <h2 class="overlay-title sm">PAUSED</h2>
+          <p class="overlay-desc">SPACE 로 계속하기</p>
+          <button class="btn" id="btn-resume" type="button">RESUME</button>
+        </div>
+
+        <div class="overlay-panel hidden" id="panel-level">
+          <h2 class="overlay-title sm">LEVEL CLEAR</h2>
+          <p class="overlay-desc" id="level-msg">다음 스테이지로!</p>
+          <button class="btn" id="btn-next" type="button">NEXT LEVEL</button>
+        </div>
+
+        <div class="overlay-panel hidden" id="panel-boss">
+          <h2 class="overlay-title sm">⚠ BOSS STAGE</h2>
+          <p class="overlay-desc">대왕 보스 벽돌이 나타났다!<br />레이저와 공으로 처치하세요</p>
+          <button class="btn" id="btn-boss" type="button">FIGHT!</button>
+        </div>
+
+        <div class="overlay-panel hidden" id="panel-over">
+          <h2 class="overlay-title sm">GAME OVER</h2>
+          <p class="overlay-desc">최종 점수 <strong id="final-score">0</strong></p>
+          <div class="name-entry">
+            <label for="player-name">이름</label>
+            <input id="player-name" maxlength="8" placeholder="PLAYER" autocomplete="off" />
+            <button class="btn btn-sm" id="btn-save-rank" type="button">SAVE RANK</button>
+          </div>
+          <ol class="rank-list" id="rank-list-over"></ol>
+          <button class="btn" id="btn-retry" type="button">TRY AGAIN</button>
+        </div>
+
+        <div class="overlay-panel hidden" id="panel-win">
+          <h2 class="overlay-title sm">YOU WIN!</h2>
+          <p class="overlay-desc">모든 레벨 클리어!<br />점수 <strong id="win-score">0</strong></p>
+          <div class="name-entry">
+            <label for="player-name-win">이름</label>
+            <input id="player-name-win" maxlength="8" placeholder="PLAYER" autocomplete="off" />
+            <button class="btn btn-sm" id="btn-save-rank-win" type="button">SAVE RANK</button>
+          </div>
+          <ol class="rank-list" id="rank-list-win"></ol>
+          <button class="btn" id="btn-again" type="button">PLAY AGAIN</button>
+        </div>
+      </div>
+    </main>
+
+    <footer class="hint">
+      아이템:
+      <span class="pu wide">WIDE</span>
+      <span class="pu multi">×3</span>
+      <span class="pu laser">LASER</span>
+      <span class="pu slow">SLOW</span>
+      <span class="pu life">LIFE</span>
+      <button class="mute-btn" id="btn-mute" type="button" title="음소거">♪ BGM</button>
+      <button class="mute-btn speed-btn" id="btn-speed" type="button" title="게임 속도">⏩ 1×</button>
+    </footer>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
