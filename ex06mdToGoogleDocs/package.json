@@ -1,0 +1,21 @@
+{
+  "name": "ex06md-to-google-docs",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MD to Google Docs automation via MCP",
+  "scripts": {
+    "auth": "npm run auth --workspace=md-to-gdocs-mcp",
+    "process": "npm run process --workspace=cli --",
+    "watch": "npm run watch --workspace=cli",
+    "test:local": "tsx scripts/test-local.ts",
+    "build": "npm run build --workspaces",
+    "postinstall": "npm run build --workspaces --if-present"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.3"
+  },
+  "workspaces": [
+    "md-to-gdocs-mcp",
+    "cli"
+  ]
+}
